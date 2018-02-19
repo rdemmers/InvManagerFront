@@ -1,0 +1,103 @@
+.bottom_padding{
+  padding-top:0px;
+  margin-top: 0px;
+  padding-bottom: 200px;
+}
+
+.scrollbar{
+  overflow: auto;
+}
+.fixed_scroll{
+  position: fixed;
+
+  left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+.blur-filter{
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+  z-index: 0;
+}
+
+.no-blur{
+  z-index: 10;
+}
+
+.fa-close{
+  padding-top: 10px;
+  padding-right: 15px;
+}
+
+.settings_menu{
+  position: fixed;
+  bottom:30px;
+  left: 10px;
+  width: 300px;
+  height: 400px;
+}
+
+.selected{
+  height: 400px;
+}
+
+.footer_bar{
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  height: 40px;
+  border-top: 1px solid #DDD;
+
+  background-color: #FFF;
+}
+
+.footer_notification{
+  position: absolute;
+  margin-right: 20px;
+  margin-top: 5px;
+  right: 0px;
+  max-height: 30px;
+}
+
+.footer_notification.history{
+  margin-right: 80px;
+}
+
+.footer_notification.new{
+  margin-right: 140px;
+}
+
+.fa-exclamation-triangle{
+  padding-left: 5px;
+}
+
+.fa-plus-square{
+  padding-left: 5px;
+}
+
+.footer_notification.button{
+  border: 1px solid #aaa;
+}
+
+.footer_notification.settings{
+  left: 0px;
+  width: 30px;
+  margin-left: 10px;
+}
+
+body{
+  background-color: #eee;
+}
+
+.menu{
+  background-color: white;
+}
+
+nav{
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}

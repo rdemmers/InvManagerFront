@@ -7,6 +7,7 @@ export default function(state = {}, action){
       case FETCH_PRODUCTS:
         return _.mapKeys(action.payload.data, 'id');
 
+
       default:
         return state;
 

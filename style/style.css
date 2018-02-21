@@ -4,6 +4,17 @@
   padding-bottom: 200px;
 }
 
+.detailWindow{
+  width: 80%;
+  max-width: 1000px;
+  height: 500px;
+  background-color: white;
+
+}
+
+.detail-label{
+  width: 200px;
+}
 .scrollbar{
   overflow: auto;
 }

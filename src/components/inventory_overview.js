@@ -10,6 +10,7 @@ import InventoryTable from './InventoryTable';
 import FooterBar from './footerbar';
 
 class InventoryOverview extends Component {
+
   render() {
     return (
       <div>

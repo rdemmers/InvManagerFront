@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchProduct} from '../actions';
+import {fetchProduct, updateProduct} from '../actions';
 import {activeProduct} from '../actions/index';
 import {bindActionCreators} from 'redux';
+import onClickOutside from "react-onclickoutside";
 
 class ProductDetails extends Component{
+
+  handleClickOutside = () =>{
+    this.props.activeProduct(null);
+  }
 
   addEntry(label, value){
     return (
@@ -19,6 +24,18 @@ class ProductDetails extends Component{
         </p>
       </div>
     );
+  }
+
+  subtract(){
+    var newValue = this.props.product.currentStock--;
+    this.setState({product: {currentStock: newValue}});
+    this.props.updateProduct(this.props.product);
+  }
+
+  add(){
+      var newValue = this.props.product.currentStock++;
+      this.setState({product: {currentStock: newValue}});
+      this.props.updateProduct(this.props.product);
   }
 
   render(){
@@ -36,36 +53,28 @@ class ProductDetails extends Component{
               {this.addEntry('Price', this.props.product.price)}
               {this.addEntry('Order Quantity', this.props.product.orderQuantity)}
               {this.addEntry('Delivery Time', this.props.product.deliveryTime)}
-            </div>
-
-          </div>
-          <div className="media-content">
-
-            <div className="content">
-
-              <p><strong> Supply:</strong></p>
 
               {this.addEntry('Minimum Stock', this.props.product.stockMinimum)}
 
             <div className="field has-addons">
               <p className="control">
-                <a className="button is-danger">
+                <a className="button is-danger" onClick={()=>{this.subtract()}}>
                 -
                 </a>
               </p>
               <p className="control">
-                <input className="input" type="text" value={this.props.product.currentStock} readOnly="true" />
+                <input className="input" type="text" value={this.props.product.currentStock}  />
               </p>
               <p className="control">
-                <a className="button is-success">
+                <a className="button is-success" onClick={()=>{this.add()}}>
                 +
                 </a>
               </p>
             </div>
+            </div>
 
           </div>
-        </div>
-        <button className="button" onClick={ ()=> this.props.activeProduct(null)}>Close</button>
+
       </article>
     </div>
 
@@ -81,7 +90,9 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({activeProduct}, dispatch);
+  return bindActionCreators({activeProduct, updateProduct}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
+var ClickWrapper = onClickOutside(ProductDetails);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClickWrapper);

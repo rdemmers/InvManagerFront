@@ -16,12 +16,6 @@ class InventoryTable extends Component {
     this.props.fetchProducts();
   }
 
-  getDetails(product){
-    console.log("table " + product.name);
-    this.setState({ activeProduct : product});
-    this.setState({ productClicked : product});
-    console.log(this.state.productClicked);
-  }
 
   renderProducts(){
     return _.map(this.props.products, product =>{
@@ -32,7 +26,7 @@ class InventoryTable extends Component {
           >
           <td>{product.barcode}</td>
           <td>{product.name}</td>
-          <td>{product.supplier.name}</td>
+          <td>{product.supplier? product.supplier.name : ""}</td>
           <td>{product.currentStock}</td>
         </tr>
       );
@@ -40,7 +34,7 @@ class InventoryTable extends Component {
   }
 
   render() {
-    console.log(this.props.product);
+
     return (
 
       <div className="card events-card scrollbar">

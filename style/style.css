@@ -8,24 +8,41 @@
   width: 80%;
   max-width: 400px;
   margin-right: 0px;
-  height: 500px;
+  height: 550px;
   background-color: white;
 
+}
+
+.newProduct{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.newProductInput{
+  width: 300px;
 }
 
 .detail-label{
   width: 200px;
 }
 
-
+.lowProducts-box{
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  height: 50%;
+  width: 300px;
+}
 .scrollbar{
   overflow: auto;
 }
 .fixed_scroll{
-    position: fixed;
-    left: 80%;
-    top: 50%;
-    transform: translate(-10%, -50%);
+  position: fixed;
+  left: 80%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .blur-filter{

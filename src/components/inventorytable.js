@@ -26,7 +26,7 @@ class InventoryTable extends Component {
           >
           <td>{product.barcode}</td>
           <td>{product.name}</td>
-          <td>{product.supplier? product.supplier.name : ""}</td>
+          <td>{product.supplier? product.supplier.name : console.log("supplier is null: " + product.name)}</td>
           <td>{product.currentStock}</td>
         </tr>
       );

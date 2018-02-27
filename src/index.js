@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import InventoryOverview from './components/inventory_overview';
+import InventoryOverview from './containers/inventory_overview';
 import reducers from './reducers';
 
 

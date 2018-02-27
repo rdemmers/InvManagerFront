@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 
 import { fetchProducts} from '../actions';
 
-import NavBar from './navbar';
-import NavBarLeft from './navbar_left';
-import SearchBar from '../containers/searchbar';
-import InventoryTable from './InventoryTable';
+import NavBar from '../components/navbar';
+import NavBarLeft from '../components/navbar_left';
+import SearchBar from './searchbar';
+import InventoryTable from '../components/InventoryTable';
 import FooterBar from './footerbar';
 
 class InventoryOverview extends Component {
+  constructor(props) {
+  super(props);
+  this.state = { };
+  }
 
   render() {
     return (
@@ -36,4 +40,8 @@ class InventoryOverview extends Component {
   }
 }
 
-export default connect(null, { fetchProducts })(InventoryOverview);
+function mapStateToProps(state){
+  return {currentState: state.inventoryState};
+}
+
+export default connect(mapStateToProps, { fetchProducts })(InventoryOverview);

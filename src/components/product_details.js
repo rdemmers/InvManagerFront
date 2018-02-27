@@ -63,7 +63,7 @@ class ProductDetails extends Component{
                 </a>
               </p>
               <p className="control">
-                <input className="input" type="text" value={this.props.product.currentStock}  />
+                <input className="input" type="text" value={this.props.product.currentStock} readOnly="true" />
               </p>
               <p className="control">
                 <a className="button is-success" onClick={()=>{this.add()}}>

@@ -42,6 +42,7 @@ export function activeProduct(product){
 
 export function updateProduct(product){
   var id = product.id;
+  product.supplierId = product.supplier.supplierId;
   const request = axios.post(`${ROOT_URL}/items/${id}`, product);
 
   return{

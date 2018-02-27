@@ -68,7 +68,7 @@ class NewProductForm extends Component{
         </p>
 
       <div className="select control">
-        <Field name="supplier" component="select">
+        <Field name="supplierId" component="select">
           {_.map(this.props.suppliers, supplier =>{
           return(
             <option key={supplier.id} value={supplier.id}>{supplier.name}</option>

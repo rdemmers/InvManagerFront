@@ -50,7 +50,7 @@ class ProductDetails extends Component{
               </p>
               {this.addEntry('Barcode', this.props.product.barcode)}
               {this.addEntry('Supplier', this.props.product.supplier.name)}
-              {this.addEntry('Price', this.props.product.price)}
+              {this.addEntry('Price', (this.props.product.price / 100).toFixed(2))}
               {this.addEntry('Order Quantity', this.props.product.orderQuantity)}
               {this.addEntry('Delivery Time', this.props.product.deliveryTime)}
 

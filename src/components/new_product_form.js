@@ -82,6 +82,7 @@ class NewProductForm extends Component{
     }
 
   onSubmit(values){
+    values.price = values.price * 100;
     this.props.createProduct(values, () =>{
       this.props.inventoryState('');
       this.props.fetchProducts();

@@ -14,8 +14,6 @@ export function fetchProducts(){
   const url = `${ROOT_URL}/items`;
   const request = axios.get(url);
 
-
-
   return{
     type: FETCH_PRODUCTS,
     payload: request

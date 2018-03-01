@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-import { fetchProducts} from '../actions';
+import { fetchProducts, getUser} from '../actions';
 
 import NavBar from '../components/navbar';
 import NavBarLeft from '../components/navbar_left';
@@ -41,7 +42,9 @@ class InventoryOverview extends Component {
 }
 
 function mapStateToProps(state){
-  return {currentState: state.inventoryState};
+  return {user: state.user};
 }
 
-export default connect(mapStateToProps, { fetchProducts })(InventoryOverview);
+
+
+export default connect(mapStateToProps, null)(InventoryOverview);

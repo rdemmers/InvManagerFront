@@ -4,12 +4,17 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchProducts, activeProduct} from '../actions/index';
 import ProductDetails from './product_details';
+import ProductEdit from './product_edit';
 
 class InventoryTable extends Component {
 
   constructor(props) {
   super(props);
-  this.state = { };
+  this.state = {
+    isEdit: false
+  };
+
+   this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount(){
@@ -33,32 +38,50 @@ class InventoryTable extends Component {
     });
   }
 
+  onProductClick(){
+    if(this.props.product && (this.props.user == "ROLE_ADMIN" || this.props.user == "ROLE_MOD") && this.state.isEdit){
+      return <ProductEdit />;
+    }else if(this.props.product){
+      return <ProductDetails />;
+    }else{
+      return(<div></div>);
+    }
+
+
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+    console.log(this.state.isEdit);
+  }
+
   render() {
 
     return (
 
       <div className="card events-card scrollbar">
-        {
-          this.props.product?
-          <ProductDetails />
-          :
-
-          <div></div>
-        }
+        {this.onProductClick()}
 
 
             <header className="card-header">
               <p className="card-header-title">
                 Inventory
-
               </p>
 
+                <div className="card-header-icon is-pulled-right">Edit Mode: <input
+                  name="isEdit"
+                  type="checkbox"
+                  checked={this.state.isEdit}
+                  onChange={this.handleInputChange}/>
+                </div>
 
-              <a href="#" className="card-header-icon" aria-label="more options">
-                <span className="icon">
-                  <i className="fa fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
             </header>
             <div className="card-table">
               <div className="content">
@@ -79,7 +102,7 @@ class InventoryTable extends Component {
 }
 
 function mapStateToProps(state){
-  return {products: state.products, product: state.activeProduct};
+  return {products: state.products, product: state.activeProduct, user:state.user};
 }
 
 function mapDispatchToProps(dispatch){

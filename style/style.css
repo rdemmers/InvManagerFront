@@ -13,6 +13,18 @@
 
 }
 
+.editWindow{
+  width: 500px;
+  margin-right: 0px;
+  height: 600px;
+  background-color: white;
+
+}
+
+.notRelative{
+  position: static!important;
+}
+
 .newProduct{
   position: fixed;
   left: 50%;

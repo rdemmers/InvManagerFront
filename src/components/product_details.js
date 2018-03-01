@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchProduct, updateProduct} from '../actions';
+import {fetchProduct, updateProduct,mutateProduct} from '../actions';
 import {activeProduct} from '../actions/index';
 import {bindActionCreators} from 'redux';
 import onClickOutside from "react-onclickoutside";
@@ -12,30 +12,32 @@ class ProductDetails extends Component{
   }
 
   addEntry(label, value){
-    return (
-      <div className="field has-addons">
-        <p className="control">
-          <a className="button is-static detail-label">
-          {label}
-          </a>
-        </p>
-        <p className="control">
-          <input className="input" type="text" value={value} readOnly="true" />
-        </p>
-      </div>
-    );
+
+      return (
+        <div className="field has-addons">
+          <p className="control">
+            <a className="button is-static detail-label">
+            {label}
+            </a>
+          </p>
+          <p className="control">
+            <input className="input" type="text" value={value} readOnly="true" />
+          </p>
+        </div>
+      );
+
   }
 
   subtract(){
     var newValue = this.props.product.currentStock--;
     this.setState({product: {currentStock: newValue}});
-    this.props.updateProduct(this.props.product);
+    this.props.mutateProduct(this.props.product);
   }
 
   add(){
       var newValue = this.props.product.currentStock++;
       this.setState({product: {currentStock: newValue}});
-      this.props.updateProduct(this.props.product);
+      this.props.mutateProduct(this.props.product);
   }
 
   render(){
@@ -85,12 +87,13 @@ class ProductDetails extends Component{
 
 function mapStateToProps(state){
   return{
-    product: state.activeProduct
+    product: state.activeProduct,
+    user: state.user
   };
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({activeProduct, updateProduct}, dispatch);
+  return bindActionCreators({activeProduct, updateProduct, mutateProduct}, dispatch);
 }
 
 var ClickWrapper = onClickOutside(ProductDetails);

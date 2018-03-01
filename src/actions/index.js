@@ -6,9 +6,11 @@ export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 export const FETCH_PRODUCT = 'FETCH_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
+export const MUTATE_PRODUCT = 'MUTATE_PRODUCT';
 export const FETCH_LOW = 'FETCH_LOW';
 export const FETCH_SUPPLIERS = 'FETCH_SUPPLIERS';
 export const SET_INVENTORYSTATE = 'SET_INVENTORYSTATE';
+export const GET_USER = 'GET_USER';
 
 export function fetchProducts(){
   const url = `${ROOT_URL}/items`;
@@ -38,15 +40,25 @@ export function activeProduct(product){
 }
 
 
-export function updateProduct(product){
+export function updateProduct(product, callback){
   var id = product.id;
   product.supplierId = product.supplier.supplierId;
-  const request = axios.post(`${ROOT_URL}/items/${id}`, product);
+  const request = axios.post(`${ROOT_URL}/items/${id}`, product).then(() => callback());
 
   return{
     type: UPDATE_PRODUCT,
     payload: request
   };
+}
+
+export function mutateProduct(product){
+  var id = product.id;
+  const request = axios.post(`${ROOT_URL}/items/${id}/mutate`, product);
+
+  return{
+    type: MUTATE_PRODUCT,
+    payload: request
+  }
 }
 
 export function createProduct(values, callback){
@@ -73,4 +85,13 @@ export function inventoryState(name){
     type: SET_INVENTORYSTATE,
     payload: name
   }
+}
+
+export function getUser(){
+    const url = `${ROOT_URL}/user`;
+    const request = axios.get(url);
+    return{
+      type: GET_USER,
+      payload: request
+    }
 }

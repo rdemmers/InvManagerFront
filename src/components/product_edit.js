@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchProducts, updateProduct, } from '../actions';
+import {fetchProducts, updateProduct, deleteProduct} from '../actions';
 import {activeProduct} from '../actions/index';
 import {bindActionCreators} from 'redux';
 import {Field, reduxForm, initialize} from 'redux-form';
@@ -22,7 +22,6 @@ class ProductEdit extends Component{
 
  handleInitialize(){
    const data = this.props.product;
-   console.log(this.props.product.id);
 
    const initData ={
       "name": data.name,
@@ -85,9 +84,16 @@ class ProductEdit extends Component{
 
   }
 
+  deleteProduct(id){
+    console.log("id " + id);
+    this.props.deleteProduct(id, () =>{
+      console.log("callback")
+      this.props.activeProduct('');
+      this.props.fetchProducts();
+    });
+  }
 
   render(){
-    const product = this.props.product;
     return(
       <div className=" box fixed_scroll editWindow">
         <article className="media">
@@ -115,6 +121,7 @@ class ProductEdit extends Component{
 
               <button type="submit" className="button is-pulled-right is-success">Submit</button>
             </form>
+              <a className="button is-danger" onClick={() => this.deleteProduct(this.props.product.id)}>Delete</a>
             </div>
 
       </article>
@@ -161,7 +168,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({activeProduct, updateProduct, fetchProducts}, dispatch);
+  return bindActionCreators({updateProduct, activeProduct, fetchProducts, deleteProduct}, dispatch);
 }
 
 var ClickWrapper = onClickOutside(ProductEdit);

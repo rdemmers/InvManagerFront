@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {filterTable} from '../actions';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
 
   constructor(props){
     super(props);
@@ -23,9 +26,6 @@ export default class SearchBar extends Component {
                   <span className="icon is-medium is-left">
                       <i className="fa fa-search"></i>
                     </span>
-                  <span className="icon is-medium is-right">
-                      <i className="fa fa-check"></i>
-                    </span>
                 </div>
               </div>
             </div>
@@ -36,9 +36,15 @@ export default class SearchBar extends Component {
   }
 
   onInputChange(event){
-    console.log(event.target.value);
     this.setState({term: event.target.value});
+    this.props.filterTable(event.target.value);
   }
 
 
 }
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({filterTable}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

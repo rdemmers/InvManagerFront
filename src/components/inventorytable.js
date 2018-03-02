@@ -21,8 +21,14 @@ class InventoryTable extends Component {
     this.props.fetchProducts();
   }
 
+  componentWillReceiveProps(){
+  //  this.filterTable(this.props.filter);
+  }
+
+
 
   renderProducts(){
+  
     return _.map(this.props.products, product =>{
       return(
         <tr key={product.id}
@@ -54,13 +60,14 @@ class InventoryTable extends Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-
     this.setState({
       [name]: value
     });
 
     console.log(this.state.isEdit);
   }
+
+
 
   render() {
 
@@ -102,7 +109,7 @@ class InventoryTable extends Component {
 }
 
 function mapStateToProps(state){
-  return {products: state.products, product: state.activeProduct, user:state.user};
+  return {products: state.products, product: state.activeProduct, user:state.user, filter: state.filter};
 }
 
 function mapDispatchToProps(dispatch){

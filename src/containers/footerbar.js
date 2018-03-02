@@ -53,15 +53,6 @@ class FooterBar extends Component {
         <div></div>
       }
 
-
-
-
-      <div className="footer_notification button history">
-        <i className="fa fa-history" aria-hidden="true"></i>
-
-
-      </div>
-
       <div className="footer_notification button" onClick={()=> this.props.inventoryState('low')}>
          {Object.keys(this.props.lowProducts).length}<i className="fa fa-exclamation-triangle " aria-hidden="true"></i>
 

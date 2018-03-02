@@ -7,10 +7,12 @@ export const FETCH_PRODUCT = 'FETCH_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const MUTATE_PRODUCT = 'MUTATE_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const FETCH_LOW = 'FETCH_LOW';
 export const FETCH_SUPPLIERS = 'FETCH_SUPPLIERS';
 export const SET_INVENTORYSTATE = 'SET_INVENTORYSTATE';
 export const GET_USER = 'GET_USER';
+export const FILTER_TABLE = 'FILTER_TABLE';
 
 export function fetchProducts(){
   const url = `${ROOT_URL}/items`;
@@ -70,6 +72,15 @@ export function createProduct(values, callback){
   }
 }
 
+export function deleteProduct(id, callback){
+  const request = axios.delete(`${ROOT_URL}/items/${id}`).then(() => callback());
+
+  return{
+    type: DELETE_PRODUCT,
+    payload: request
+  }
+}
+
 export function getSuppliers(){
   const url = `${ROOT_URL}/suppliers`;
   const request = axios.get(url);
@@ -94,4 +105,11 @@ export function getUser(){
       type: GET_USER,
       payload: request
     }
+}
+
+export function filterTable(value){
+  return{
+    type: FILTER_TABLE,
+    payload: value
+  }
 }

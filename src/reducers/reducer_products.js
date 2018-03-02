@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, UPDATE_PRODUCT, CREATE_PRODUCT, MUTATE_PRODUCT} from '../actions';
+import { FETCH_PRODUCTS, UPDATE_PRODUCT, CREATE_PRODUCT, MUTATE_PRODUCT, DELETE_PRODUCT} from '../actions';
 import _ from 'lodash';
 
 export default function(state = {}, action){
@@ -11,6 +11,8 @@ export default function(state = {}, action){
       case MUTATE_PRODUCT:
         return {...state};
       case CREATE_PRODUCT:
+        return {...state};
+      case DELETE_PRODUCT:
         return {...state};
       default:
         return state;

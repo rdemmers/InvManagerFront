@@ -6,6 +6,7 @@ import LowReducer from './reducer_lowProducts';
 import userReducer from './reducer_user';
 import InventoryStateReducer from './reducer_inventoryState';
 import SuppliersReducer from './reducer_suppliers';
+import FilterReducer from './reducer_table';
 
 const rootReducer = combineReducers({
   products: ProductReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   inventoryState: InventoryStateReducer,
   suppliers: SuppliersReducer,
   form: formReducer,
-  user: userReducer
+  user: userReducer,
+  filter: FilterReducer
 });
 
 export default rootReducer;

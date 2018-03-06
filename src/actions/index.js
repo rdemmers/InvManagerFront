@@ -43,6 +43,7 @@ export function activeProduct(product){
 
 
 export function updateProduct(product, callback){
+  product.price = product.price * 100;
   var id = product.id;
   product.supplierId = product.supplier.supplierId;
   const request = axios.post(`${ROOT_URL}/items/${id}`, product).then(() => callback());

@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import {fetchProducts, activeProduct} from '../actions/index';
 import ProductDetails from './product_details';
 import ProductEdit from './product_edit';
+import ReactTooltip from 'react-tooltip';
 
 class InventoryTable extends Component {
 
@@ -21,17 +22,17 @@ class InventoryTable extends Component {
     this.props.fetchProducts();
   }
 
-  componentWillReceiveProps(){
-  //  this.filterTable(this.props.filter);
+  componentDidUpdate() {
+    ReactTooltip.rebuild();
   }
 
 
 
   renderProducts(){
-  
+
     return _.map(this.props.products, product =>{
       return(
-        <tr key={product.id}
+        <tr data-tip={product.description} key={product.id}
           onClick={ ()=> this.props.activeProduct(product)}
 
           >
@@ -92,6 +93,7 @@ class InventoryTable extends Component {
             </header>
             <div className="card-table">
               <div className="content">
+                <ReactTooltip />
                 <table className="table is-fullwidth is-striped">
 
                   <tbody>

@@ -32,6 +32,7 @@ class ProductEdit extends Component{
       "deliveryTime":data.deliveryTime,
       "stockMinimum": data.stockMinimum,
       "currentStock": data.currentStock,
+      "description" : data.description,
       "id": data.id,
    }
 
@@ -75,7 +76,7 @@ class ProductEdit extends Component{
   }
 
   onSubmit(values){
-    values.price = values.price * 100;
+    console.log(values);
     this.props.updateProduct(values, () =>{
       this.props.activeProduct('');
       this.props.fetchProducts();
@@ -85,7 +86,6 @@ class ProductEdit extends Component{
   }
 
   deleteProduct(id){
-    console.log("id " + id);
     this.props.deleteProduct(id, () =>{
       console.log("callback")
       this.props.activeProduct('');
@@ -118,6 +118,7 @@ class ProductEdit extends Component{
 
               {this.addEntry('Minimum Stock', 'stockMinimum')}
               {this.addEntry('Current Stock', 'currentStock')}
+              {this.addEntry('description', 'description')}
 
               <button type="submit" className="button is-pulled-right is-success">Submit</button>
             </form>

@@ -8,6 +8,7 @@ import { getLowProducts, inventoryState, getUser } from '../actions';
 
 import LowTableBox from '../components/LowTableBox';
 import NewProduct from '../components/new_product';
+import NewOrder from '../components/new_order';
 
 class FooterBar extends Component {
   constructor(props) {
@@ -22,7 +23,9 @@ class FooterBar extends Component {
   }
 
   lowProductsBox(){
-    if(this.props.currentState == 'low'){
+    if(this.props.orderState){
+      return (<NewOrder />)
+    } else if(this.props.currentState == 'low'){
       return (<LowTableBox />);
     } else if(this.props.currentState == 'new'){
 
@@ -66,7 +69,7 @@ class FooterBar extends Component {
 }
 
 function mapStateToProps(state){
-  return {lowProducts: state.lowProducts, currentState: state.inventoryState, user: state.user};
+  return {lowProducts: state.lowProducts, currentState: state.inventoryState, user: state.user, orderState: state.orderState};
 }
 
 function mapDispatchToProps(dispatch){

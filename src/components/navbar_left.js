@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 export default class NavBarLeft extends Component {
   render() {
@@ -9,8 +10,8 @@ export default class NavBarLeft extends Component {
             Inventory
           </p>
           <ul className="menu-list">
-            <li><a className="is-active">Overview</a></li>
-            <li><a>Statistics</a></li>
+            <li><Link to="../bulletjournal/">Overview</Link></li>
+            <li><Link to="../bulletjournal/orders">Orders</Link></li>
           </ul>
           <p className="menu-label">
             Managing

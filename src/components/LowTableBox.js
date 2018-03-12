@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getLowProducts, inventoryState} from '../actions/index';
+import {getLowProducts, orderState, inventoryState} from '../actions/index';
 import ProductDetails from './product_details';
 import onClickOutside from "react-onclickoutside";
 
@@ -26,7 +26,7 @@ class LowTableBox extends Component {
   renderProducts(){
     return _.map(this.props.lowProducts, product =>{
       return(
-        <tr key={product.id}>
+        <tr key={product.id} onClick={()=> this.props.orderState(product)}>
           <td className="is-size-7">[{product.supplier.name}] {product.name}</td>
           <td className="is-size-7">{product.currentStock}</td>
         </tr>
@@ -55,7 +55,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({getLowProducts, inventoryState}, dispatch);
+  return bindActionCreators({getLowProducts, orderState, inventoryState}, dispatch);
 }
 
 var ClickWrapper = onClickOutside(LowTableBox);

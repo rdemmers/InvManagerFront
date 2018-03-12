@@ -13,6 +13,9 @@ export const FETCH_SUPPLIERS = 'FETCH_SUPPLIERS';
 export const SET_INVENTORYSTATE = 'SET_INVENTORYSTATE';
 export const GET_USER = 'GET_USER';
 export const FILTER_TABLE = 'FILTER_TABLE';
+export const FETCH_ORDERS ='FETCH_ORDERS';
+export const CREATE_ORDER = 'CREATE_ORDER';
+export const SET_ORDERSTATE = 'SET_ORDERSTATE';
 
 export function fetchProducts(){
   const url = `${ROOT_URL}/items`;
@@ -112,5 +115,31 @@ export function filterTable(value){
   return{
     type: FILTER_TABLE,
     payload: value
+  }
+}
+
+export function fetchOrders(){
+  const url = `${ROOT_URL}/orders`;
+  const request = axios.get(url);
+
+  return{
+    type: FETCH_ORDERS,
+    payload: request
+  };
+}
+
+export function createOrder(values, callback){
+  const request = axios.post(`${ROOT_URL}/orders/new`, values).then(() => callback());
+
+  return{
+    type: CREATE_ORDER,
+    payload: request
+  }
+}
+
+export function orderState(values){
+  return{
+    type: SET_ORDERSTATE,
+    payload: values
   }
 }

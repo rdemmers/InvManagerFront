@@ -65,7 +65,6 @@ class InventoryTable extends Component {
       [name]: value
     });
 
-    console.log(this.state.isEdit);
   }
 
 

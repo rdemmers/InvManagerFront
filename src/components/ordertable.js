@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchOrders, activeProduct} from '../actions/index';
+import {fetchOrders, activeProduct, orderReceived} from '../actions/index';
 import ProductDetails from './product_details';
 import ProductEdit from './product_edit';
 import ReactTooltip from 'react-tooltip';
@@ -26,7 +26,15 @@ class InventoryTable extends Component {
     ReactTooltip.rebuild();
   }
 
+  confirmReceived(order){
+    if(!order.received && order.ordered){
+      if(confirm('Do you want to add the received order to the inventory?')) {this.postReceived(order)};
+    }
+  }
 
+  postReceived(order){
+    this.props.orderReceived(order.id, () => {this.props.fetchOrders();})
+  }
 
   renderProducts(){
     var arrayTest = _.sortBy(this.props.order, "date").reverse();
@@ -42,10 +50,11 @@ class InventoryTable extends Component {
       }
       var date = new Date(order.date);
       return(
-        <tr key={order.id} >
+        <tr key={order.id} onClick={() => this.confirmReceived(order)}>
           <td>{order.productId.supplier.name}</td>
           <td>{order.productId.name}</td>
-          <td>{date.toLocaleString()}</td>
+          <td>{order.quantityMultiplier}</td>
+          <td>{date.toLocaleDateString()}</td>
           <td>{status}</td>
         </tr>
       );
@@ -107,6 +116,7 @@ class InventoryTable extends Component {
                     <tr>
                       <th>Supplier</th>
                       <th>Name</th>
+                      <th>Amount</th>
                       <th>Order made</th>
                       <th>Status</th>
                     </tr>
@@ -128,7 +138,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({fetchOrders}, dispatch);
+  return bindActionCreators({fetchOrders, orderReceived}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InventoryTable);

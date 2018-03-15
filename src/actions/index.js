@@ -15,6 +15,7 @@ export const GET_USER = 'GET_USER';
 export const FILTER_TABLE = 'FILTER_TABLE';
 export const FETCH_ORDERS ='FETCH_ORDERS';
 export const CREATE_ORDER = 'CREATE_ORDER';
+export const ORDER_RECEIVED = 'ORDER_RECEIVED';
 export const SET_ORDERSTATE = 'SET_ORDERSTATE';
 
 export function fetchProducts(){
@@ -133,6 +134,15 @@ export function createOrder(values, callback){
 
   return{
     type: CREATE_ORDER,
+    payload: request
+  }
+}
+
+export function orderReceived(orderId, callback){
+  const request = axios.post(`${ROOT_URL}/orders/${orderId}`).then(() => callback());
+
+  return{
+    type: ORDER_RECEIVED,
     payload: request
   }
 }

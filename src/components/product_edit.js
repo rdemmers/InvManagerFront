@@ -28,7 +28,7 @@ class ProductEdit extends Component{
       "barcode": data.barcode,
       "supplier": data.supplier,
       "price": (data.price / 100).toFixed(2),
-      "orderQuantity": data.orderQuantity,
+      "orderMetric": data.orderMetric,
       "deliveryTime":data.deliveryTime,
       "stockMinimum": data.stockMinimum,
       "currentStock": data.currentStock,
@@ -113,7 +113,7 @@ class ProductEdit extends Component{
                 </p>
               </div>
               {this.addEntry('Price', 'price')}
-              {this.addEntry('Order Quantity', 'orderQuantity')}
+              {this.addEntry('Order Quantity', 'orderMetric')}
               {this.addEntry('Delivery Time', 'deliveryTime')}
 
               {this.addEntry('Minimum Stock', 'stockMinimum')}
@@ -143,8 +143,8 @@ function validate(values){
     if(!values.price){
       errors.price = "The price cannot be empty."
     }
-    if(!values.orderQuantity){
-      errors.orderQuantity = "The quantity cannot be empty."
+    if(!values.orderMetric){
+      errors.orderMetric = "The quantity cannot be empty."
     }
     if(!values.deliveryTime){
       errors.deliveryTime = "The delivery time cannot be empty."

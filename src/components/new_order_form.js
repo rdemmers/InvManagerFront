@@ -87,7 +87,7 @@ class NewOrderForm extends Component{
     console.log(this.props.currentProduct);
 
     return(
-      <div className="columns">
+
         <div className="column">
             <div className="content">
               <p>
@@ -97,17 +97,16 @@ class NewOrderForm extends Component{
               {this.addInfo('Product name', this.props.currentProduct.name)}
               {this.addInfo('Barcode', this.props.currentProduct.barcode)}
               {this.addInfo('Price', (this.props.currentProduct.price / 100).toFixed(2))}
-              {this.addInfo('Products per Order', this.props.currentProduct.orderQuantity)}
-              {this.addInfo('Delivery Time in days', this.props.currentProduct.deliveryTime)}
 
+              {this.addEntry('Amount:', 'quantity')}
               <button type="submit" className="button is-pulled-right is-success">Submit</button>
             </form>
             </div>
+
+
+
           </div>
-          <div className="column">
-            {this.addEntry('Amount of orders:', 'quantity')}
-          </div>
-      </div>
+
 
     );
   };

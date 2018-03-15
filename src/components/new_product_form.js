@@ -105,7 +105,7 @@ class NewProductForm extends Component{
               {this.addEntry('Barcode', 'barcode')}
               {this.populateSuppliers()}
               {this.addEntry('Price', 'price')}
-              {this.addEntry('Order Quantity', 'orderQuantity')}
+              {this.addEntry('Order Quantity', 'orderMetric')}
               {this.addEntry('Delivery Time', 'deliveryTime')}
 
               {this.addEntry('Minimum Stock', 'stockMinimum')}
@@ -131,8 +131,8 @@ function validate(values){
     if(!values.price){
       errors.price = "The price cannot be empty."
     }
-    if(!values.orderQuantity){
-      errors.orderQuantity = "The quantity cannot be empty."
+    if(!values.orderMetric){
+      errors.orderMetric = "The quantity cannot be empty."
     }
     if(!values.deliveryTime){
       errors.deliveryTime = "The delivery time cannot be empty."

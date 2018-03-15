@@ -28,7 +28,7 @@ class NewOrder extends Component{
 
 
             <NewOrderForm />
-          
+
 
 
     </div>

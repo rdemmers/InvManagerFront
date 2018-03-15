@@ -42,15 +42,18 @@ class InventoryTable extends Component {
     return _.map(arrayTest, order =>{
 
       var status = "Pending.";
+      var styling = "";
       if(order.ordered){
         status = "Order sent."
       }
       if(order.received){
         status = "Added to Inventory.";
+        styling = "has-text-grey-light";
       }
       var date = new Date(order.date);
+
       return(
-        <tr key={order.id} onClick={() => this.confirmReceived(order)}>
+        <tr key={order.id} className={styling} onClick={() => this.confirmReceived(order)}>
           <td>{order.productId.supplier.name}</td>
           <td>{order.productId.name}</td>
           <td>{order.quantityMultiplier}</td>

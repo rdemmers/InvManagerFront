@@ -106,7 +106,6 @@ class NewOrderForm extends Component{
           </div>
           <div className="column">
             {this.addEntry('Amount of orders:', 'quantity')}
-            {this.addEntry('Comments:', 'comments')}
           </div>
       </div>
 

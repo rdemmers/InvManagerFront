@@ -25,10 +25,11 @@ class LowTableBox extends Component {
 
   renderProducts(){
     return _.map(this.props.lowProducts, product =>{
+      var lowProduct = product[0];
       return(
-        <tr key={product.id} onClick={()=> this.props.orderState(product)}>
-          <td className="is-size-7">[{product.supplier.name}] {product.name}</td>
-          <td className="is-size-7">{product.currentStock}</td>
+        <tr key={lowProduct.id} onClick={()=> this.props.orderState(lowProduct)}>
+          <td className="is-size-7">[{lowProduct.supplier.name}] {lowProduct.name}</td>
+          <td className="is-size-7">{lowProduct.currentStock}</td>
         </tr>
       );
     });

@@ -15,10 +15,11 @@ class FooterBar extends Component {
   super(props);
   this.state = { };
   this.props.getUser();
+  this.props.getLowProducts();
   }
 
   componentDidMount(){
-    this.props.getLowProducts();
+
 
   }
 
@@ -35,7 +36,6 @@ class FooterBar extends Component {
   }
 
   render() {
-
     return (
       <div>{this.lowProductsBox()}
       <div className="footer_bar">

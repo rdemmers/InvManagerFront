@@ -29,16 +29,24 @@ class InventoryTable extends Component {
 
 
   renderProducts(){
-    console.log(this.props.order);
-    return _.map(this.props.order, order =>{
+    var arrayTest = _.sortBy(this.props.order, "date").reverse();
 
+    return _.map(arrayTest, order =>{
+
+      var status = "Pending.";
+      if(order.ordered){
+        status = "Order sent."
+      }
+      if(order.received){
+        status = "Added to Inventory.";
+      }
       var date = new Date(order.date);
       return(
-        <tr key={order.id}>
+        <tr key={order.id} >
           <td>{order.productId.supplier.name}</td>
           <td>{order.productId.name}</td>
           <td>{date.toLocaleString()}</td>
-
+          <td>{status}</td>
         </tr>
       );
     });
@@ -96,6 +104,12 @@ class InventoryTable extends Component {
                 <table className="table is-fullwidth is-striped">
 
                   <tbody>
+                    <tr>
+                      <th>Supplier</th>
+                      <th>Name</th>
+                      <th>Order made</th>
+                      <th>Status</th>
+                    </tr>
                     {this.renderProducts()}
                   </tbody>
                 </table>

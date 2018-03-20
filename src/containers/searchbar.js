@@ -11,6 +11,7 @@ class SearchBar extends Component {
     this.state = { term: ''};
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.props.filterTable("");
   }
 
   render() {

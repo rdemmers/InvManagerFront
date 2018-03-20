@@ -7,15 +7,10 @@ import ProductDetails from './product_details';
 import ProductEdit from './product_edit';
 import ReactTooltip from 'react-tooltip';
 
-class InventoryTable extends Component {
+class OrderTable extends Component {
 
   constructor(props) {
   super(props);
-  this.state = {
-    isEdit: false
-  };
-
-   this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount(){
@@ -64,28 +59,7 @@ class InventoryTable extends Component {
     });
   }
 
-  onProductClick(){
-    if(this.props.product && (this.props.user == "ROLE_ADMIN" || this.props.user == "ROLE_MOD") && this.state.isEdit){
-      return <ProductEdit />;
-    }else if(this.props.product){
-      return <ProductDetails />;
-    }else{
-      return(<div></div>);
-    }
 
-
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value
-    });
-
-    console.log(this.state.isEdit);
-  }
 
 
 
@@ -94,20 +68,15 @@ class InventoryTable extends Component {
     return (
 
       <div className="card events-card scrollbar">
-        {this.onProductClick()}
+
 
 
             <header className="card-header">
               <p className="card-header-title">
-                Inventory
+                Orders
               </p>
 
-                <div className="card-header-icon is-pulled-right">Edit Mode: <input
-                  name="isEdit"
-                  type="checkbox"
-                  checked={this.state.isEdit}
-                  onChange={this.handleInputChange}/>
-                </div>
+
 
             </header>
             <div className="card-table">
@@ -144,4 +113,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({fetchOrders, orderReceived}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InventoryTable);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderTable);

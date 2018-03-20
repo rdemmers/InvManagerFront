@@ -26,11 +26,30 @@ class InventoryTable extends Component {
     ReactTooltip.rebuild();
   }
 
+  filterArray(productArray){
+    var filterKey = this.props.filter.toUpperCase();
 
+    var filteredProduct = _.filter(productArray, function(obj){
+      if(obj.name.toUpperCase().indexOf(filterKey) >-1){
+        return obj;
+      }
+      if(obj.supplier.name.toUpperCase().indexOf(filterKey) >- 1){
+        return obj;
+      }
+      if(obj.barcode.toUpperCase().indexOf(filterKey) >- 1){
+        return obj;
+      }
+
+    });
+
+    return filteredProduct;
+  }
 
   renderProducts(){
+     var filteredProduct = this.filterArray(this.props.products);
 
-    return _.map(this.props.products, product =>{
+
+    return _.map(filteredProduct, product =>{
       return(
         <tr data-tip={product.description} key={product.id}
           onClick={ ()=> this.props.activeProduct(product)}

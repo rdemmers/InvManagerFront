@@ -17,12 +17,10 @@ export default class NavBarLeft extends Component {
             Managing
           </p>
           <ul className="menu-list">
-            <a>Statistics</a>
               <ul>
-                <li><a>Supplier Overview</a></li>
-                <li><a>Usage</a></li>
+                <li><Link to="../bulletjournal/suppliers">Supplier Overview</Link></li>
               </ul>
-            </ul>
+          </ul>
         </aside>
       </div>
 

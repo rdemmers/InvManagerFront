@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import InventoryOverview from './containers/inventory_overview';
 import OrderOverview from './containers/order_overview';
+import SupplierOverview from './containers/supplier_overview';
 import reducers from './reducers';
 
 
@@ -19,6 +20,7 @@ ReactDOM.render(
       <div>
         <Switch>
         <Route path="/*/orders" component={OrderOverview} />
+        <Route path="/*/suppliers" component={SupplierOverview} />
         <Route path="/*/" component={InventoryOverview} />
         </Switch>
       </div>

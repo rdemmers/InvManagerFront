@@ -52,9 +52,7 @@ class InventoryTable extends Component {
     return _.map(filteredProduct, product =>{
       return(
         <tr data-tip={product.description} key={product.id}
-          onClick={ ()=> this.props.activeProduct(product)}
-
-          >
+          onClick={ ()=> this.props.activeProduct(product)}          >
           <td>{product.barcode}</td>
           <td>{product.name}</td>
           <td>{product.supplier? product.supplier.name : console.log("supplier is null: " + product.name)}</td>

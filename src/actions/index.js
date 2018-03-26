@@ -10,6 +10,7 @@ export const MUTATE_PRODUCT = 'MUTATE_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const FETCH_LOW = 'FETCH_LOW';
 export const FETCH_SUPPLIERS = 'FETCH_SUPPLIERS';
+export const CREATE_SUPPLIER = 'CREATE_SUPPLIER';
 export const SET_INVENTORYSTATE = 'SET_INVENTORYSTATE';
 export const GET_USER = 'GET_USER';
 export const FILTER_TABLE = 'FILTER_TABLE';
@@ -92,6 +93,15 @@ export function getSuppliers(){
 
   return{
     type: FETCH_SUPPLIERS,
+    payload: request
+  }
+}
+
+export function createSupplier(values, callback){
+  const request = axios.post(`${ROOT_URL}/suppliers/new`, values).then(() => callback());
+
+  return{
+    type: CREATE_SUPPLIER,
     payload: request
   }
 }

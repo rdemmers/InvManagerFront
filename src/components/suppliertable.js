@@ -6,7 +6,7 @@ import {getSuppliers} from '../actions/index';
 import ProductDetails from './product_details';
 import ProductEdit from './product_edit';
 
-class InventoryTable extends Component {
+class SupplierTable extends Component {
 
   constructor(props) {
   super(props);
@@ -18,21 +18,18 @@ class InventoryTable extends Component {
   }
 
 
+
   renderSuppliers(){
+
     return _.map(this.props.suppliers, supplier =>{
       return(
-        <tr key={supplier.id}>
+        <tr key={supplier.supplierId}>
           <td>{supplier.name}</td>
           <td>{supplier.questionMail}</td>
           <td>{supplier.phone}</td>
         </tr>
       );
     });
-  }
-
-  onProductClick(){
-
-
   }
 
 
@@ -84,4 +81,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({getSuppliers}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InventoryTable);
+export default connect(mapStateToProps, mapDispatchToProps)(SupplierTable);

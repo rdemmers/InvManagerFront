@@ -8,9 +8,9 @@ import NavBar from '../components/navbar';
 import NavBarLeft from '../components/navbar_left';
 import SearchBar from './searchbar';
 import SupplierTable from '../components/SupplierTable';
-import FooterBar from './footerbar';
+import SupplierBar from './supplierBar';
 
-class InventoryOverview extends Component {
+class SupplierOverview extends Component {
   constructor(props) {
   super(props);
   this.state = { };
@@ -34,7 +34,7 @@ class InventoryOverview extends Component {
           </div>
         </div>
       </div>
-      <FooterBar />
+      <SupplierBar />
     </div>
     )
   }
@@ -46,4 +46,4 @@ function mapStateToProps(state){
 
 
 
-export default connect(mapStateToProps, null)(InventoryOverview);
+export default connect(mapStateToProps, null)(SupplierOverview);

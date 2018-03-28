@@ -1,25 +1,5 @@
-# ReduxSimpleStarter
+# Inventory Manager Front-end
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+This project is meant to be a front-end for my inventory manager back-end. Since Java is currently my focus this project is still quite a mess. At this point my priority for this project is that I can display the data of my Java project in an clear manner, so optimization and scaleablity aren't a focus right now.
 
-### Getting Started
-
-There are two methods for getting started with this repo.
-
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
-
-```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
-> npm install
-> npm start
-```
-
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-> npm install
-> npm start
-```
+For images of the application in action, please visit my 'invmanager' repository.
